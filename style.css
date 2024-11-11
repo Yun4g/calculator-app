@@ -1,26 +1,32 @@
 *{
+    padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Courier New', Courier, monospace';
+    font-family: 'Courier New', Courier, monospace'
 }
 body{
-    background-color: hsl(0, 0%, 10%);
+    background-color: hsl(0, 0%, 18%);
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
 }
-
-#container{
-    background-color: hsl(0, 0%, 18%);
+.result{
+    transform: translateX(120px);
+    font-size: 26px;
+    color: rgb(161, 162, 163);
+}
+#container{  
+     background-color:#000;
     border-radius: 20px;
     max-width: 350px;
-    height: 75vh;
+    height: 80vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    padding-top: 65px;
 
 }
 #display{
@@ -33,7 +39,8 @@ body{
     height: 15vh;
     border: none;
     padding: 20px;
-    transform: translateY(-24px);
+  
+   outline: none;
     
  
 }
@@ -43,21 +50,30 @@ body{
     gap: 6px;
     padding-left: 16px;
     color: azure;
+
   
 
 }
 .grid-last{
+ 
     display: flex;
     margin-top: 10px;
-    padding-left: 20px;
+    padding-left: 16px;
+    
+
 }
 
-.grid-last :nth-child(1){
+.grid-last .zero{
+    display: flex;
+    text-align: left;
+    padding-right: 5rem;
     width: 139px;
-    
+    border-radius: 50px;
+   
 }
-.grid-last :nth-child(2){
-    margin-left: 30px;
+.grid-last div{
+    display: flex;
+    margin-left: 10px;
 }
 
 .shade{
@@ -66,14 +82,17 @@ body{
 }
 button{
     margin-right: 15px;
-    width: 4vw;
-    height: 10vh;
-    border-radius: 50px;
-    font-size: 1.6rem;
+    width:60px ;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 30px;
     border: none;
     background-color: hsl(0, 1%, 29%);
     color: white;
-    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
 button:hover{
     background-color: hsl(0, 0%, 60%);

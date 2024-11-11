@@ -1,5 +1,5 @@
 const display = document.querySelector('#display');
-
+let result  = document.querySelector(".result");
 
 function output(input){
     display.value += input;
@@ -8,9 +8,13 @@ function output(input){
 
 function remove(){
     display.value = " ";
+    result.textContent = " ";
 
 }
 
 function calculate(){
-     display.value =  eval(display.value);
+     let evaluate =  eval(display.value);
+     result.textContent = evaluate
+     console.log(result)
 }
+
