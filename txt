@@ -1,0 +1,17 @@
+              <button onclick="output('9')">9</button>
+              <button onclick="output('7')">7</button>
+              <button onclick="output('/')" class="operation">/</button>
+              <button onclick="output('8')">8</button>
+               <button onclick="output('6')">6</button>
+              <button onclick="output('4')">4</button>
+              <button onclick="output('5')">5</button>
+              <button onclick="output('-')" class="operation">-</button>
+              <button onclick="output('0')">0</button>
+              <button onclick="output('2')">2</button>
+              <button onclick="output('3')">3</button>
+              <button onclick="output('*')" class="operation">*</button>
+              <button onclick="calculate()">=</button> 
+              <button onclick="output('1')">1</button>
+              <button onclick="output('.')">.</button>
+              <button onclick="output('/')" class="operation">/</button>
+              <button onclick="remove()" class="operation">C</button>

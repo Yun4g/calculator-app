@@ -10,42 +10,66 @@ body{
     align-items: center;
     min-height: 100vh;
 }
+
 #container{
     background-color: hsl(0, 0%, 18%);
-    border-radius: 40px;
-    max-width: 450px;
+    border-radius: 20px;
+    max-width: 350px;
     height: 75vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 
 }
 #display{
-    background-color: hsl(0, 0%, 96%);
-    color: hsl(0, 30%, 4%);
+    display: flex;
+    text-align: right;
+    background-color:#000;
+    color: white;
     font-size: 4rem;
     width: 100%;
     height: 15vh;
-    border-radius: 8px;
     border: none;
+    padding: 20px;
     transform: translateY(-24px);
-    padding: 25px;
+    
+ 
 }
 #keys{
     display: grid;
     grid-template-columns: auto auto auto auto ;
     gap: 6px;
     padding-left: 16px;
+    color: azure;
   
 
 }
+.grid-last{
+    display: flex;
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+.grid-last :nth-child(1){
+    width: 139px;
+    
+}
+.grid-last :nth-child(2){
+    margin-left: 30px;
+}
+
+.shade{
+    background-color: hsl(0, 0%, 60%);
+    cursor: pointer;
+}
 button{
     margin-right: 15px;
-    width: 5vw;
+    width: 4vw;
     height: 10vh;
     border-radius: 50px;
-    font-size: 2rem;
+    font-size: 1.6rem;
     border: none;
     background-color: hsl(0, 1%, 29%);
     color: white;
@@ -64,26 +88,14 @@ button:hover{
     background-color: rgb(54, 42, 18);
 }
 
-@media screen and (max-width:950px){
-    button{
-        width: 10vw;
-    }
+.operation1{
+    background-color: hsl(39, 100%, 50%);
+    transform: translateX(290px);
+}
+.operation1:hover{
+    background-color: hsl(40, 67%, 56%);
+}
+.operation1:active{
+    background-color: rgb(54, 42, 18);
 }
 
-@media screen and (max-width:400px){
-    #container{
-        height: 100vh;
-        border-radius: 0;
-    }
-    button{
-        width: 20vw;
-    }
-     
-    #display{
-        height: 20vh;
-        transform: translateY(-110px);
-    }
-    #keys{
-        transform: translateY(-100px);
-    }
-}
