@@ -7,7 +7,7 @@ function output(input){
 }
 
 function remove(){
-    display.value = " ";
+    display.value = "";
     result.textContent = " ";
 
 }
