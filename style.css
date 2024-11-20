@@ -16,7 +16,7 @@ body{
     font-size: 26px;
     color: rgb(161, 162, 163);
 }
-#container{  
+.calculator{  
      background-color:#000;
     border-radius: 20px;
     max-width: 350px;
@@ -29,7 +29,7 @@ body{
     padding-top: 65px;
 
 }
-#display{
+.display{
     display: flex;
     text-align: right;
     background-color:#010101a6;
@@ -39,38 +39,24 @@ body{
     height: 15vh;
     border: none;
     padding: 20px;
+    justify-content: flex-end;
   
    outline: none;
     
  
 }
-#keys{
+.button-container{
     display: grid;
     grid-template-columns: auto auto auto auto ;
-    gap: 6px;
+    gap: 5px;
     padding-left: 16px;
     color: azure;
 
   
 
 }
-.grid-last{
- 
-    display: flex;
-    margin-top: 10px;
-    padding-left: 16px;
-    
 
-}
 
-.grid-last .zero{
-    display: flex;
-    text-align: left;
-    padding-right: 5rem;
-    width: 139px;
-    border-radius: 50px;
-   
-}
 .grid-last div{
     display: flex;
     margin-left: 10px;
@@ -80,7 +66,7 @@ body{
     background-color: hsl(0, 0%, 60%);
     cursor: pointer;
 }
-button{
+.button{
     margin-right: 15px;
     width:60px ;
     height: 60px;
@@ -97,13 +83,14 @@ button{
 button:hover{
     background-color: hsl(0, 0%, 60%);
 }
-.operation{
+.operator{
     background-color: hsl(39, 100%, 50%);
+    
 }
-.operation:hover{
+.operator:hover{
     background-color: hsl(40, 67%, 56%);
 }
-.operation:active{
+.operato:read-only{
     background-color: rgb(54, 42, 18);
 }
 
@@ -118,3 +105,13 @@ button:hover{
     background-color: rgb(54, 42, 18);
 }
 
+
+
+.number-0{
+    width: 150px;
+    border-radius: 55px;
+    justify-content: flex-start;
+    padding-left: 30px;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}

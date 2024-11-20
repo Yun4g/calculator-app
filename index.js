@@ -1,67 +1,87 @@
-const display = document.querySelector('#display');
-let result  = document.querySelector(".result");
-let buttons = document.querySelectorAll('button');
+document.addEventListener('DOMContentLoaded', () => {
+    const display = document.querySelector(".display");
+    const buttons = document.querySelectorAll(".button");
+    const result = document.querySelector('.result');
 
+    let currentInput = '';
+    let previousInput = '';
+    let currentOperator = '';
 
-for (let i = 0; i < buttons.length; i++) {
-      
-    buttons[i].addEventListener('click', ()=>{
-        let buttonText = buttons[i].textContent;
-        if (buttonText !== ' = ' && buttonText !== 'AC'  ) {
-        display.value += buttonText;
-        console.log(display.value);
+    // Update display
+    const updateDisplay = (value) => {
+        display.textContent = value;
+        
+    };
+
+    // Handle operator click
+    const operatorClicked = (operator) => {
+        if (currentInput === '') return; // Prevent setting operator without a number
+        if (previousInput !== '') {
+            // If there's a previous input, calculate first before setting new operator
+            currentInput = calculatedResult(previousInput, currentInput, currentOperator).toString();
         }
-    })
-    
-}
+        previousInput = currentInput;
+        currentOperator = operator;
+        currentInput = ''; // Clear current input for next number
+        updateDisplay(previousInput + ' ' + currentOperator); // Display previous input and operator
+    };
 
-function remove(){
-    display.value = "";
-     result.textContent = " ";
-}
+    // Handle equal click
+    const equalToClicked = () => {
+        if (previousInput && currentInput && currentOperator) {
+            const result = calculatedResult(previousInput, currentInput, currentOperator);
+            updateDisplay(result);
+            currentInput = result;
+            previousInput = '';
+            currentOperator = '';
+        }
+    };
 
-function calculate(){
-          let evaluate =  eval(display.value);
-          result.textContent = evaluate
-          console.log(result)
-     }
+    // Calculate result
+    const calculatedResult = (num1, num2, operator) => {
+        num1 = parseFloat(num1);
+        num2 = parseFloat(num2);
 
+        switch (operator) {
+            case '+': return num1 + num2;
+            case '-': return num1 - num2;
+            case '×': return num1 * num2;
+            case '÷': return num2 === 0 ? 'Error' : num1 / num2;
+            default: return 'Error';
+        }
+    };
 
+    // Handle button clicks
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            const buttonValue = button.textContent.trim();
 
-   
+            if (!isNaN(buttonValue)) {
+                // Number button
+                currentInput += buttonValue;
+                updateDisplay(previousInput + (currentOperator ? ' ' + currentOperator + ' ' : '') + currentInput);
+            } else if (['+', '-', '×', '÷'].includes(buttonValue)) {
+                // Operator button
+                operatorClicked(buttonValue);
+            } else if (buttonValue === '=') {
+                // Equal button
+                equalToClicked();
+            } else if (buttonValue === 'AC') {
+                // Clear button
+                currentInput = '';
+                previousInput = '';
+                currentOperator = '';
+                updateDisplay('0');
+            } else if (buttonValue === '.') {
+                // Decimal button
+                if (!currentInput.includes('.')) {
+                    currentInput += '.';
+                    updateDisplay(previousInput + (currentOperator ? ' ' + currentOperator + ' ' : '') + currentInput);
+                }
+            }
+        });
+    });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function output(input){
-//     display.value += input;
-
-// }
-
-// function remove(){
-//     display.value = "";
-//     result.textContent = " ";
-
-// }
-
-// function calculate(){
-//      let evaluate =  eval(display.value);
-//      result.textContent = evaluate
-//      console.log(result)
-// }
-
+    // Initialize display
+    updateDisplay('0');
+});

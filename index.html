@@ -7,38 +7,34 @@
     <title>calculator</title>
 </head>
 <body>
-    <div id="container">
+   
+    <section class="calculator">
         <p class="result"></p>
-        <input type="text" id="display">
-         <div id="keys">
-          <button onclick="remove()" class="shade">AC</button>
-          <button  class="shade">+/-</button>
-          <button class="shade">%</button>
-          <button  class="operation"> ÷ </button>
-          <button  class="num" >7</button>
-          <button class="num">8</button>
-          <button class="num">9</button>
-          <button class="operation">x</button>
-          <button class="num">4</button>
-          <button class="num">5</button>
-          <button>6</button>
-          <button class="operation">-</button>
-          <button class="num">1</button>
-          <button class="num">2</button>
-          <button class="num">3</button>
-          <button class="operation">+</button>       
-         </div>
-         <div class="grid-last">
-            <button   class="zero   num">0</button>
-            <div>
-            <button class="operation"> .</button>
-            <button onclick="calculate()" class="operation"> = </button>
-        </div>
-        </div>
-    </div>
- 
+        <div class="display">0</div>
 
-    
+<div class="button-container">
+    <div class="button function clear">AC</div>
+    <div class="button function percent">%</div>
+    <div class="button function plus-minus">±</div>
+    <div class="button operator">÷</div>
+    <div class="button">7</div>
+    <div class="button">8</div>
+    <div class="button">9</div>
+    <div class="button operator">×</div>
+    <div class="button">4</div>
+    <div class="button">5</div>
+    <div class="button">6</div>
+    <div class="button operator">-</div>
+    <div class="button">1</div>
+    <div class="button">2</div>
+    <div class="button">3</div>
+    <div class="button operator">+</div>
+    <div class="button">0</div>
+    <div class="button decimal">.</div>
+    <div class="button operator">=</div>
+</div>
+    </section>
+   
 
     <script src="./index.js"></script>
 </body>

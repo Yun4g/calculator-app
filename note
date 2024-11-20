@@ -1,0 +1,154 @@
+
+When building a calculator using the provided HTML structure, the main functionality can be broken into modular components (functions) that handle specific aspects of the calculator's behavior. Below is an outline of the essential functions and their purposes:
+
+1. Initialize the Calculator
+Purpose: Prepare the calculator for user interaction by adding event listeners to buttons and initializing variables.
+Key Tasks:
+Select and store references to the display and buttons.
+Define variables to store the current input, the previous input, the selected operator, and whether the last action was an evaluation.
+2. Handle Number Input
+Purpose: Append a number to the current input or start a new number if the previous action was an operator or evaluation.
+Key Tasks:
+Add clicked numbers to the current input.
+Update the display to reflect the entered numbers.
+Prevent leading zero issues unless the number is a decimal.
+3. Handle Decimal Input
+Purpose: Allow users to input decimal numbers without adding multiple decimal points.
+Key Tasks:
+Check if the current input already contains a decimal point.
+Append a decimal point if valid.
+4. Handle Operator Input
+Purpose: Store the current operator and prepare for the next number input.
+Key Tasks:
+Save the current input to memory as the "previous input."
+Save the selected operator.
+Clear the current input for the next number.
+Replace an operator if the user clicks a new one without entering a number.
+5. Handle Evaluation (=)
+Purpose: Perform the calculation based on the stored operator, previous input, and current input.
+Key Tasks:
+Convert the inputs to numbers and apply the operation.
+Handle division by zero or invalid operations gracefully.
+Display the result.
+Reset or update the calculator's state for further calculations.
+6. Clear All (AC)
+Purpose: Reset the calculator to its initial state.
+Key Tasks:
+Clear all variables (current input, previous input, operator).
+Reset the display to 0.
+7. Toggle Positive/Negative (±)
+Purpose: Allow users to switch the sign of the current input.
+Key Tasks:
+Multiply the current input by -1.
+Update the display.
+8. Handle Percentage (%)
+Purpose: Convert the current input into its percentage value.
+Key Tasks:
+Divide the current input by 100.
+Update the display.
+9. Update the Display
+Purpose: Reflect the current state of the calculator on the screen.
+Key Tasks:
+Display the current input, the full equation, or the result as needed.
+Handle cases where the display needs to show intermediate results or expressions.
+10. Handle Button Click Events
+Purpose: Respond to user interactions with the buttons.
+Key Tasks:
+Detect the type of button clicked (number, operator, function).
+Call the appropriate function based on the button type.
+
+
+
+// Selectors
+const display = document.querySelector(".display");
+const buttons = document.querySelectorAll(".button");
+
+// Variables
+let currentInput = "";
+let previousInput = "";
+let operator = null;
+
+// Initialize Calculator
+function initCalculator() {
+    buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+            const type = button.classList.contains("number") ? "number" :
+             button.classList.contains("operator") ? "operator" :
+                         "function";
+            handleButtonClick(type, button.textContent.trim());
+        });
+    });
+    display.textContent = "0";
+}
+
+// Handle Button Click
+function handleButtonClick(type, value) {
+    if (type === "number") handleNumberInput(value);
+    if (type === "operator") handleOperatorInput(value);
+    if (type === "function") handleFunctionInput(value);
+}
+
+// Functions
+function handleNumberInput(number) {
+    if (currentInput === "0" && number !== ".") currentInput = "";
+    currentInput += number;
+    updateDisplay(currentInput);
+}
+
+function handleOperatorInput(op) {
+    if (currentInput === "" && previousInput !== "") return;
+    if (operator) evaluate(); // If there's an operator, evaluate first
+    operator = op;
+    previousInput = currentInput;
+    currentInput = "";
+    updateDisplay(`${previousInput} ${operator}`);
+}
+
+function handleFunctionInput(func) {
+    switch (func) {
+        case "AC":
+            currentInput = "";
+            previousInput = "";
+            operator = null;
+            updateDisplay("0");
+            break;
+        case "±":
+            currentInput = (parseFloat(currentInput) * -1).toString();
+            updateDisplay(currentInput);
+            break;
+        case "%":
+            currentInput = (parseFloat(currentInput) / 100).toString();
+            updateDisplay(currentInput);
+            break;
+        case "=":
+            evaluate();
+            break;
+    }
+}
+
+function evaluate() {
+    if (!previousInput || !currentInput || !operator) return;
+    const a = parseFloat(previousInput);
+    const b = parseFloat(currentInput);
+    let result;
+
+    switch (operator) {
+        case "+": result = a + b; break;
+        case "-": result = a - b; break;
+        case "×": result = a * b; break;
+        case "÷": result = a / b; break;
+    }
+
+    updateDisplay(result);
+    currentInput = result.toString();
+    previousInput = "";
+    operator = null;
+}
+
+// Update Display
+function updateDisplay(value) {
+    display.textContent = value;
+}
+
+// Initialize the calculator
+initCalculator();
