@@ -1,6 +1,7 @@
+
 document.addEventListener('DOMContentLoaded', () => {
-    const display = document.querySelector(".display");
-    const buttons = document.querySelectorAll(".button");
+    const display = document.querySelector('.display');
+    const buttons = document.querySelectorAll('.button');
     const result = document.querySelector('.result');
 
     let currentInput = '';
@@ -9,8 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Update display
     const updateDisplay = (value) => {
-        display.textContent = value;
-        
+        display.value = value;
     };
 
     // Handle operator click
@@ -76,6 +76,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Decimal button
                 if (!currentInput.includes('.')) {
                     currentInput += '.';
+                    updateDisplay(previousInput + (currentOperator ? ' ' + currentOperator + ' ' : '') + currentInput);
+                }
+            } else if (buttonValue === '%') {
+                // Percent button
+                if (currentInput !== '') {
+                    currentInput = (parseFloat(currentInput) / 100).toString();
+                    updateDisplay(previousInput + (currentOperator ? ' ' + currentOperator + ' ' : '') + currentInput);
+                }
+            } else if (buttonValue === '±') {
+                // Negation button
+                if (currentInput !== '') {
+                    currentInput = (parseFloat(currentInput) * -1).toString();
                     updateDisplay(previousInput + (currentOperator ? ' ' + currentOperator + ' ' : '') + currentInput);
                 }
             }
