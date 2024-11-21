@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Handle operator click
+
     const operatorClicked = (operator) => {
         if (currentInput === '') return; // Prevent setting operator without a number
         if (previousInput !== '') {
@@ -51,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    
     // Handle button clicks
     buttons.forEach(button => {
         button.addEventListener('click', () => {

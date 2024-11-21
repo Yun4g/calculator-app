@@ -40,13 +40,11 @@ body{
     border: none;
     padding: 20px;
     justify-content: flex-end;
-   
-  
+    outline: none;
     
  
 }
 .button-container{
-    overflow: scroll;
     display: grid;
     grid-template-columns: auto auto auto auto ;
     gap: 5px;

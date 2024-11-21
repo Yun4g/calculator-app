@@ -122,3 +122,13 @@
 // Ensures the calculator display starts at 0 when the page loads.
 // Summary:
 // This code provides a fully functional calculator, managing input states, performing calculations, and handling edge cases like division by zero. The modular approach using functions ensures reusability and clarity.
+
+
+
+
+
+
+// In JavaScript, slice and splice are two methods commonly used for working with arrays, but they serve different purposes and behave differently. Here’s a detailed explanation:
+
+// 1. slice()
+// The slice() method is used to extract a portion of an array without modifying the original array. It returns a shallow copy of the selected portion.
